@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +29,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //넘버링
 	private int id;
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 50, unique = true)
 	private String userName;
 	
 	@Column(nullable = false, length = 100) //hash 사용할거
@@ -36,8 +38,8 @@ public class User {
 	@Column(nullable = false, length = 50)
 	private String email;
 	
-	@ColumnDefault("'user'")
-	private String role; //admin, user, manager
+	@Enumerated(EnumType.STRING)
+	private RoleType role; //ADMIN, USER
 	
 	@CreationTimestamp //시간 자동입력
 	private Timestamp createDate;
