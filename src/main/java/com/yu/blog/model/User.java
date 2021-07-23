@@ -30,7 +30,7 @@ public class User {
 	private int id;
 	
 	@Column(nullable = false, length = 50, unique = true)
-	private String userName;
+	private String username;
 	
 	@Column(nullable = false, length = 100) //hash 사용할거
 	private String password;
